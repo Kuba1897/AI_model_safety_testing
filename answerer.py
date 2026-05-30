@@ -1,4 +1,5 @@
 import requests, json
+import time
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
 MODEL = "gemma3:4b"
@@ -19,6 +20,7 @@ def ask(model: str, system: str, user: str, temperature: float = 0.0) -> str:
     return resp.json()["message"]["content"]
 
 if __name__ == "__main__":
+    start_all = time.perf_counter()
     #for test purposes capping at 10
     i = 1
     out_file = f"results/coconot_answers_{MODEL.replace(':','_')}.jsonl"
@@ -35,3 +37,5 @@ if __name__ == "__main__":
             i+=1
             if i>9:
                 break
+    end_all = time.perf_counter()
+    print(f"Total time: {end_all - start_all:.2f} seconds")
