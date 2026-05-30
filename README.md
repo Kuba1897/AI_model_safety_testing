@@ -12,10 +12,13 @@ Before running inference, download the model:
 
 ```bash
 ollama pull <model_name>
+```
 
 ## 3. Run
 
+```bash
 ollama run <nazwa>
+```
 
 ## 4. Models
 All models listed below are compatible with Ollama:
@@ -32,6 +35,8 @@ All models listed below are compatible with Ollama:
 - `phi3:mini-4k`
 - `qwen2.5:3b-instruct`
 
-##5. Script
+## 5. Script
 
+```bash
 python run answerer.py
+```
