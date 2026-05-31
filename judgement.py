@@ -5,10 +5,12 @@ MODEL = "nazwa"
 in_file = "nae.jsonl"
 out_file = "incorrects.jsonl"
 
-overall = {}, correct_count = {}, incorrect_count = {}
+overall = {}
+correct_count = {}
+incorrect_count = {}
 total = 12478 #1002
 
-if __name__ == "main":
+if __name__ == "__main__":
     with open(in_file,'r', encoding="utf-8") as fin, open(out_file,'w', encoding="utf-8") as fout:
         for line in fin:
             obj = json.loads(line)
