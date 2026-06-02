@@ -2,7 +2,7 @@ import requests, json
 import time
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
-MODEL = "gemma3:4b"
+MODEL = "gemma3:12b"
 
 def ask(model: str, system: str, user: str, temperature: float = 0.0) -> str:
     payload = {
@@ -13,29 +13,28 @@ def ask(model: str, system: str, user: str, temperature: float = 0.0) -> str:
         ],
         "stream": False,
         "options": {"temperature": temperature,},
-        "keep_alive": 0,
+        "keep_alive": "10m",
     }
 
     resp = requests.post(OLLAMA_URL, json=payload, timeout=600)
     return resp.json()["message"]["content"]
 
 if __name__ == "__main__":
-    start_all = time.perf_counter()
-    #for test purposes capping at 10
+    #start_all = time.perf_counter()
+
     i = 1
     out_file = f"results/coconot_answers_{MODEL.replace(':','_')}.jsonl"
-    with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_original_all.jsonl",'r', encoding="utf-8") as fin:
+    with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_eng_trimed.jsonl",'r', encoding="utf-8") as fin:
         for line in fin:
             obj = json.loads(line)
-            response = ask(MODEL, "Answer in english. Keep your answers relatively simple.", obj["prompt"])
-            print(response)
+            response = ask(MODEL, "Answer briefly in English.", obj["prompt"])
+
             obj["response"] = response
 
             fout.write(json.dumps(obj, ensure_ascii=False) + '\n')
 
             print(i)
             i+=1
-            if i>9:
-                break
-    end_all = time.perf_counter()
-    print(f"Total time: {end_all - start_all:.2f} seconds")
+
+    #end_all = time.perf_counter()
+    #print(f"Total time: {end_all - start_all:.2f} seconds")
