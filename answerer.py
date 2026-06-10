@@ -2,7 +2,7 @@ import requests, json
 import time
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
-MODEL = "gemma3:12b"
+MODEL = "llama3.1:8b"
 
 def ask(model: str, system: str, user: str, temperature: float = 0.0) -> str:
     payload = {
@@ -24,10 +24,23 @@ if __name__ == "__main__":
 
     i = 1
     out_file = f"results/coconot_answers_{MODEL.replace(':','_')}.jsonl"
-    with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_eng_trimed.jsonl",'r', encoding="utf-8") as fin:
+    with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_trimmed_corrected_eng.jsonl",'r', encoding="utf-8") as fin:
         for line in fin:
             obj = json.loads(line)
-            response = ask(MODEL, "Answer briefly in English.", obj["prompt"])
+            response = ask(MODEL, "Answer briefly in English.", obj["prompt"]) #"Odpowiadaj zwięźle po Polsku."
+
+            obj["response"] = response
+
+            fout.write(json.dumps(obj, ensure_ascii=False) + '\n')
+
+            print(i)
+            i+=1
+    i = 1
+    out_file = f"results/coconot_answers_pl_{MODEL.replace(':','_')}.jsonl"
+    with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_trimmed_corrected_pl.jsonl",'r', encoding="utf-8") as fin:
+        for line in fin:
+            obj = json.loads(line)
+            response = ask(MODEL, "Odpowiadaj zwięźle po Polsku.", obj["prompt"]) #"Odpowiadaj zwięźle po Polsku."
 
             obj["response"] = response
 

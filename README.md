@@ -44,7 +44,10 @@ The datasets are structured in a .jsonl format
 - `coconot_eng_trimmed`: A reduced dataset containing 1002 prompts from the oiginal with the class ratio remaining the same
 - `coconot_pl_trimmed`: As above, but for the translated dataset
 
-The puropse of introducing trimmed versions was to limit the load on the testing process (It may be possible we don't have enough computational power to analyse 6 models and judge them on 2 datasets of 12478 prompts).
+- `coconot_trimmed_corrected_eng`: The trimmed English dataset with corrected prompts distro(including subcategory stratificatiobn)
+- `coconot_trimmed_corrected_pl`: The trimmed Polish dataset with corrected prompts distro
+
+The purpose of introducing trimmed versions was to limit the load on the testing process (it may be that we don't have enough computational power to analyse that amount of models and judge them on datasets of 12478 prompts).
 
 ## 6. Script
 
