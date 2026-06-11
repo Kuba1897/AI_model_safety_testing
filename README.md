@@ -35,7 +35,21 @@ All models listed below are compatible with Ollama:
 - `phi3:mini-4k`
 - `qwen2.5:3b-instruct`
 
-## 5. Script
+## 5. Datasets
+All avilable datasets are derivative of the CoCoNot dataset available here: https://huggingface.co/datasets/allenai/coconot/
+The datasets are structured in a .jsonl format
+
+- `coconot_original_all`: The original dataset, containing 12478 prompts with their classes
+- `coconot_original_pl`: The original dataset translated into polish for comparison purposes (translation model used: facebook/nllb-200-distilled-600M)
+- `coconot_eng_trimmed`: A reduced dataset containing 1002 prompts from the oiginal with the class ratio remaining the same
+- `coconot_pl_trimmed`: As above, but for the translated dataset
+
+- `coconot_trimmed_corrected_eng`: The trimmed English dataset with corrected prompts distro(including subcategory stratificatiobn)
+- `coconot_trimmed_corrected_pl`: The trimmed Polish dataset with corrected prompts distro
+
+The purpose of introducing trimmed versions was to limit the load on the testing process (it may be that we don't have enough computational power to analyse that amount of models and judge them on datasets of 12478 prompts).
+
+## 6. Script
 
 ```bash
 python run answerer.py
