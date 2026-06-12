@@ -22,19 +22,19 @@ def ask(model: str, system: str, user: str, temperature: float = 0.0) -> str:
 if __name__ == "__main__":
     #start_all = time.perf_counter()
 
-    i = 1
-    out_file = f"results/coconot_answers_{MODEL.replace(':','_')}.jsonl"
-    with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_trimmed_corrected_eng.jsonl",'r', encoding="utf-8") as fin:
-        for line in fin:
-            obj = json.loads(line)
-            response = ask(MODEL, "Answer briefly in English.", obj["prompt"]) #"Odpowiadaj zwięźle po Polsku."
+    # i = 1
+    # out_file = f"results/coconot_answers_{MODEL.replace(':','_')}.jsonl"
+    # with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_trimmed_corrected_eng.jsonl",'r', encoding="utf-8") as fin:
+    #     for line in fin:
+    #         obj = json.loads(line)
+    #         response = ask(MODEL, "Answer briefly in English.", obj["prompt"]) #"Odpowiadaj zwięźle po Polsku."
 
-            obj["response"] = response
+    #         obj["response"] = response
 
-            fout.write(json.dumps(obj, ensure_ascii=False) + '\n')
+    #         fout.write(json.dumps(obj, ensure_ascii=False) + '\n')
 
-            print(i)
-            i+=1
+    #         print(i)
+    #         i+=1
     i = 1
     out_file = f"results/coconot_answers_pl_{MODEL.replace(':','_')}.jsonl"
     with open(out_file, 'w', encoding="utf-8") as fout, open("coconot_trimmed_corrected_pl.jsonl",'r', encoding="utf-8") as fin:
