@@ -45,25 +45,43 @@ The datasets are structured in a .jsonl format
 The purpose of introducing trimmed versions was to limit the load on the testing process (it may be that we don't have enough computational power to analyse that amount of models and judge them on datasets of 12478 prompts).
 
 ## 6. Script
-### answerer.py
-Skrypt służy do generowania odpowiedzi dla zestawu promptów przy użyciu wybranego modelu językowego.
+### `answerer.py`
+
+The script is used to generate responses for a set of prompts using a selected language model.
+
 ```bash
 python run answerer.py
 ```
-Na początku skryptu znajduje się zmienna:
-MODEL = "..."
-Należy w niej podać nazwę modelu z dostępnych (Models).
-W kodzie maina znajduje się zmienna:
-out_file = "..."
-Należy w niej podać nazwę pliku wyjściowego dla odpowiedzi modelu.
 
-Należy również upewnić się, że poprawna jest nazwa pliku wejściowego oraz prompt (czy zgadza się język).
-### judgement.py
-Skrypt służy do analizy wyników klasyfikacji zapisanych w plikach znajdujących się w katalogu judgements.
+At the beginning of the script, there is a variable:
+
+```python
+MODEL = "..."
+```
+Set this variable to one of the available model names listed in **Models**.
+
+In the `main` function, there is also a variable:
+
+```python
+out_file = "..."
+```
+Specify the name of the output file where the model responses will be saved.
+
+Additionally, make sure that:
+
+* the input file name is correct,
+* the selected prompt matches the intended language.
+
+### `judgement.py`
+
+The script is used to analyze classification results stored in files located in the `judgements` directory.
+
 ```bash
 python run judgement.py
 ```
 Na początku skryptu znajduje się zmienna:
+```python
 in_file = "..."
+```
 Należy w niej podać ścieżkę do analizowanego pliku z katalogu judgements.
 
