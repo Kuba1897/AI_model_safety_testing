@@ -23,17 +23,12 @@ ollama run <nazwa>
 ## 4. Models
 All models listed below are compatible with Ollama:
 
-- `qwen3:8b`
 - `gemma3:4b`
 - `gemma3:12b`
 - `phi4:14b`
 - `llama3.1:8b`
-- `llama3.3:70b`
 - `deepseek-r1:8b`
 - `tinyllama:1.1b`
-- `gemma2:2b`
-- `phi3:mini-4k`
-- `qwen2.5:3b-instruct`
 
 ## 5. Datasets
 All avilable datasets are derivative of the CoCoNot dataset available here: https://huggingface.co/datasets/allenai/coconot/
@@ -50,7 +45,25 @@ The datasets are structured in a .jsonl format
 The purpose of introducing trimmed versions was to limit the load on the testing process (it may be that we don't have enough computational power to analyse that amount of models and judge them on datasets of 12478 prompts).
 
 ## 6. Script
-
+### answerer.py
+Skrypt służy do generowania odpowiedzi dla zestawu promptów przy użyciu wybranego modelu językowego.
 ```bash
 python run answerer.py
 ```
+Na początku skryptu znajduje się zmienna:
+MODEL = "..."
+Należy w niej podać nazwę modelu z dostępnych (Models).
+W kodzie maina znajduje się zmnenna:
+out_file = "..."
+Należy w niej podać nazwę pliku wyjściowego dla odpowiedzi modelu.
+
+Należy również upewnić się, że poprawna jest nazwa pliku wejściowego oraz prompt (czy zgadza się język).
+### judgement.py
+Skrypt służy do analizy wyników klasyfikacji zapisanych w plikach znajdujących się w katalogu judgements.
+```bash
+python run judgement.py
+```
+Na początku skryptu znajduje się zmienna:
+in_file = "..."
+Należy w niej podać ścieżkę do analizowanego pliku z katalogu judgements
+
