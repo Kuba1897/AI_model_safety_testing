@@ -53,7 +53,7 @@ python run answerer.py
 Na początku skryptu znajduje się zmienna:
 MODEL = "..."
 Należy w niej podać nazwę modelu z dostępnych (Models).
-W kodzie maina znajduje się zmnenna:
+W kodzie maina znajduje się zmienna:
 out_file = "..."
 Należy w niej podać nazwę pliku wyjściowego dla odpowiedzi modelu.
 
@@ -65,5 +65,5 @@ python run judgement.py
 ```
 Na początku skryptu znajduje się zmienna:
 in_file = "..."
-Należy w niej podać ścieżkę do analizowanego pliku z katalogu judgements
+Należy w niej podać ścieżkę do analizowanego pliku z katalogu judgements.
 
