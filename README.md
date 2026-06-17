@@ -79,9 +79,9 @@ The script is used to analyze classification results stored in files located in 
 ```bash
 python run judgement.py
 ```
-Na początku skryptu znajduje się zmienna:
+At the beginning of the script, there is a variable:
 ```python
 in_file = "..."
 ```
-Należy w niej podać ścieżkę do analizowanego pliku z katalogu judgements.
+This variable should contain the path to the file to be analyzed from the judgements directory.
 
